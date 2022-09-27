@@ -29,8 +29,6 @@ function setup() {
   currentColor = color(255);
   pointsColor = color(50);
   bestColor = color(0, 200, 0);
-
-  frameRate(144);
 }
 
 function draw() {
@@ -45,17 +43,10 @@ function draw() {
     console.log("Record distance", bestDist);
   }
 
-  // Draw points
-  noFill();
-  stroke(pointsColor);
-  strokeWeight(2);
-  for (let i = 0; i < cities.length; i++) {
-    ellipse(cities[i].x, cities[i].y, radius, radius);
-  }
 
   // Draw best order path
   stroke(bestColor);
-  strokeWeight(2);
+  strokeWeight(4);
   noFill();
   beginShape();
   for (let i = 0; i < bestOrder.length; i++) {
@@ -74,6 +65,14 @@ function draw() {
     vertex(city.x, city.y);
   }
   endShape();
+
+  // Draw points
+  noFill();
+  stroke(pointsColor);
+  strokeWeight(2);
+  for (let i = 0; i < cities.length; i++) {
+    ellipse(cities[i].x, cities[i].y, radius, radius);
+  }
 }
 
 function getOrderDistance(cities, order) {
